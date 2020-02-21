@@ -183,19 +183,4 @@ if __name__ == "__main__":
 
     robot.sort()
     print(robot._list)
-
-
-"""
-  for i in range(0, len(self._list)):
-    if self._item == None:
-      self._item = self._list[i]
-    self.goForward()
-    print('robot at', self._position, 'with', self._item)
-    for item in self._list[self._position:]:
-      print('found', item)
-      if self._item > item:
-        self.swap_item()
-        print('swap', self._position, self._item)
-      # else:
-        # self.goForward()
-"""
+    

@@ -21,7 +21,7 @@ Suppose that you have an n-story building and plenty of eggs. Suppose also that 
 `brokenEggs` is the number of broken eggs
 
 
-### Finding the lowest floor that if i drop an egg, it breaks
+### Finding the lowest floor that if I drop an egg, it breaks
 
 def findFloorF(n)
   if n < 1: return n
@@ -37,5 +37,5 @@ def findFloorF(n)
       `f` equals to nFloor - 1
       break from for loop
   return `f`
-#### 
-### The overall runtime complexity of this function would be `O(log n)` because the input `n` is halved on each step forward.
+
+### The runtime complexity of this function would be `O(n)` 
