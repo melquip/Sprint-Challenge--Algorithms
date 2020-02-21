@@ -30,7 +30,6 @@ class SortingRobot:
         This will increment the time counter by 1.
         """
         self._time += 1
-        print('move_right', self._time, self._position < len(self._list) - 1)
         if self._position < len(self._list) - 1:
             self._position += 1
             return True
@@ -44,7 +43,6 @@ class SortingRobot:
         This will increment the time counter by 1.
         """
         self._time += 1
-        print('move_left', self._time, self._position > 0)
         if self._position > 0:
             self._position -= 1
             return True
@@ -58,7 +56,6 @@ class SortingRobot:
         This will increment the time counter by 1.
         """
         self._time += 1
-        print('swap', self._time)
         # Swap the held item with the list item at the robot's position
         self._item, self._list[self._position] = self._list[self._position], self._item
 
@@ -181,7 +178,7 @@ if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
 
-    l = [1, -38, -95, 4, 23, -73, -65, -36, 85, 2, 58, -26, -55, 96, 55, -76, 64, 45, 69, 36, 69, 47, 29, -47, 13, 89, -57, -88, -87, 54, 60, 56, -98, -78, 59, 93, -41, -74, 73, -35, -23, -79, -35, 46, -18, -18, 37, -64, 14, -57, -2, 15, -85, 45, -73, -2, 79, -87, -100, 21, -51, 22, 26, -59, 81, 59, -24, 24, -81, 43, 61, 52, 38, -88, -95, 87, -57, -37, -65, -47, -3, 21, -77, 98, 25, 1, -36, 39, 78, 47, -35, -40, -69, -81, 11, -47, 21, 25, -53, -31]
+    l = [5, 4, 3, 2, 1]
     robot = SortingRobot(l)
 
     robot.sort()
