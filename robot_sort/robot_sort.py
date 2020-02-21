@@ -30,6 +30,7 @@ class SortingRobot:
         This will increment the time counter by 1.
         """
         self._time += 1
+        print('move_right', self._time, self._position < len(self._list) - 1)
         if self._position < len(self._list) - 1:
             self._position += 1
             return True
@@ -43,6 +44,7 @@ class SortingRobot:
         This will increment the time counter by 1.
         """
         self._time += 1
+        print('move_left', self._time, self._position > 0)
         if self._position > 0:
             self._position -= 1
             return True
@@ -55,11 +57,10 @@ class SortingRobot:
         of it.
         This will increment the time counter by 1.
         """
-        # print(f'-- {self._item} {self._list[self._position]} --')
         self._time += 1
+        print('swap', self._time)
         # Swap the held item with the list item at the robot's position
         self._item, self._list[self._position] = self._list[self._position], self._item
-        # print(f'-- {self._item} {self._list[self._position]} --')
 
     def compare_item(self):
         """
@@ -102,7 +103,7 @@ class SortingRobot:
         while not self.light_is_on():
           # set the light on
           self.set_light_on()
-          # while robot can move right
+          # while robot can move right bubble up highest number
           while self.can_move_right():
             # if its not holding any item or at an invalid position
             if self.compare_item() == None:
@@ -138,10 +139,42 @@ class SortingRobot:
               self.swap_item()
               # move forward
               self.move_right()
-
+          # while robot can move right bubble down lowest number
           while self.can_move_left() and not self.light_is_on():
-            self.move_left()
-        print('end?', self._list)
+            # if its not holding any item or at an invalid position
+            if self.compare_item() == None:
+              # pick up an item from the list
+              self.swap_item()
+              # move forward
+              self.move_left()
+            # If the held item's value is greater than item in front of robot
+            if self.compare_item() == 1:
+              # move backwards
+              self.move_right()
+              # leave lower value here but pickup "None"
+              self.swap_item()
+              # move forward
+              self.move_left()
+            # If the held item's value is less than item in front of robot
+            if self.compare_item() == -1:
+              # leave bigger value here and take lower value
+              self.swap_item()
+              # move backwards
+              self.move_right()
+              # leave lower value behind
+              self.swap_item()
+              # move forward
+              self.move_left()
+              # did a swap so light off and continue swapping
+              self.set_light_off()
+            # If the held item's value is equal to item in front of robot
+            if self.compare_item() == 0:
+              # move backwards
+              self.move_right()
+              # leave equal value here but pickup "None"
+              self.swap_item()
+              # move forward
+              self.move_left()
 
 
 if __name__ == "__main__":
